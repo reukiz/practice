@@ -20,13 +20,13 @@ app.get('/yelpcamp/achieve', function(req, res){
 })
 
 app.get('/yelpcamp', function(req, res){
-    Headline.find({}).populate('contents').exec(function(err, found){
-        if(err){
-            console.log(err);
+    Headline.find().populate('contents').exec(function(err, done){
+        if (err) {
+            console.log(err)
         } else {
-            res.render('index', {found: found})
+            res.render('index', {done: done})
         }
-    })
+    });   
 });
 
 //Create Headline
@@ -39,32 +39,34 @@ app.post('/yelpcamp', function(req, res){
         if (err) {
             console.log(err);
         } else {
+            console.log(add);
             res.redirect('/yelpcamp');
         }
     })
 });
 
 //Create Content
-app.get('/yelpcamp/:id/addcontent/new', function(req, res){
-    Headline.findById(req.params.id, function(err, found){
+app.get('/yelpcamp/:headlines/addcontent/new', function(req, res){
+    Headline.findById(req.params.headlines, function(err, found){
         if(err){
             console.log(err);
         } else {
-            res.render('contents')
+            res.render('contents', {found: found})
         }
-    })
-})
+    });
+});
 
-app.post('/yelpcamp/:id/addcontent', function(req, res){
-    Headline.findById(req.params.id, function(err, found){
+app.post('/yelpcamp/:headlines/addcontent', function(req, res){
+    Headline.findById(req.params.headlines, function(err, found){
         if(err){
             console.log(err);
         } else {
-            Content.create(req.body.addcontent, function(err, add){
+            Content.create(req.body.addcontent.text, function(err, add){
                 if(err){
                     console.log(err);
                 } else {
                     found.contents.push(add);
+                    console.log(found);
                     found.save();
                     res.redirect('/yelpcamp');
                 }
