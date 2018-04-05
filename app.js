@@ -61,7 +61,7 @@ app.post('/yelpcamp/:headlines/addcontent', function(req, res){
         if(err){
             console.log(err);
         } else {
-            Content.create(req.body.addcontent.text, function(err, add){
+            Content.create(req.body.addcontent, function(err, add){
                 if(err){
                     console.log(err);
                 } else {
