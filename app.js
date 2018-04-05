@@ -20,7 +20,7 @@ app.get('/yelpcamp/achieve', function(req, res){
 })
 
 app.get('/yelpcamp', function(req, res){
-    Headline.find().populate('contents').exec(function(err, done){
+    Headline.find().populate('content').exec(function(err, done){
         if (err) {
             console.log(err)
         } else {
@@ -65,15 +65,15 @@ app.post('/yelpcamp/:headlines/addcontent', function(req, res){
                 if(err){
                     console.log(err);
                 } else {
+                    console.log(add)
                     found.contents.push(add);
-                    console.log(found);
                     found.save();
+                    console.log(add);
                     res.redirect('/yelpcamp');
                 }
             })
         }
     })
-    
 })
 
 //Error Route
@@ -84,6 +84,13 @@ app.get('*', function(req, res){
 app.listen(process.env.PORT || 3000, process.env.IP, function(){
     console.log('Server Start');
     // Headline.remove({}, function(err, remove){
+    //     if(err) {
+    //         console.log(err);
+    //     } else {
+    //         console.log('remove');
+    //     }
+    // });
+    // Content.remove({}, function(err, remove){
     //     if(err) {
     //         console.log(err);
     //     } else {
