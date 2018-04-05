@@ -1,6 +1,6 @@
-<h1>Add Content</h1>
+<h1><%= found.title %></h1>
 
-<form action="/yelpcamp" method="POST">
-    <input type="text" placeholder="Headline Title" name="addcontent[text]">
+<form action="/yelpcamp/<%= found._id%>/addcontent" method="POST">
+    <input type="text" placeholder="Add Content" name="addcontent[contents]">
     <button type="submit">Submit</button>
 </form>

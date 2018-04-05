@@ -3,13 +3,14 @@
 <a href="/yelpcamp/addheadline/new">Add Headline</a>
 
 <div>
-    <% found.forEach(function(all){ %>
-        <h5><%= all.title %></h5>
-    <% }) %>
-    <% found.contents.forEach(function(content){ %>
-        <p> <%= content.text %></p>
-    <% }) %>
-    <a href="/yelpcamp/<%=all._id%>/addcontent/new">Add Content</a>
+    <div>
+        <% done.forEach(function(all){ %>
+            <h5><%= all.title %></h5>
+            <a href="/yelpcamp/<%=all._id%>/addcontent/new">Add Content</a>
+            <p><%= all.contents%></p>
+        <% }) %>
+        
+    </div>
 </div>
 
 
