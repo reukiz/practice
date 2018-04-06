@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 
 var headlineSchema = new mongoose.Schema ({
     title: String,
-    content: [
+    contentitems: [
         {
         type: mongoose.Schema.Types.ObjectId,
         ref : 'Content'

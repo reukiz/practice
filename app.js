@@ -5,7 +5,7 @@ var express    = require('express'),
     Content    = require('./models/content')
     app        = express();
 
-mongoose.connect('mongodb://localhost/problems');
+mongoose.connect('mongodb://localhost/problemzz');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -20,7 +20,7 @@ app.get('/yelpcamp/achieve', function(req, res){
 })
 
 app.get('/yelpcamp', function(req, res){
-    Headline.find().populate('content').exec(function(err, done){
+    Headline.find().populate('contentitems').exec(function(err, done){
         if (err) {
             console.log(err)
         } else {
@@ -66,7 +66,7 @@ app.post('/yelpcamp/:headlines/addcontent', function(req, res){
                     console.log(err);
                 } else {
                     console.log(add)
-                    found.contents.push(add);
+                    found.contentitems.push(add);
                     found.save();
                     console.log(add);
                     res.redirect('/yelpcamp');

@@ -7,12 +7,11 @@
         <% done.forEach(function(all){ %>
             <h5><%= all.title %></h5>
             <a href="/yelpcamp/<%=all._id%>/addcontent/new">Add Content</a>
-            <% all.content.forEach(function(item){ %>
-                <p><%= item.content %></p>
+            <% all.contentitems.forEach(function(item){ %>
+                <p><%= item.text %></p>
             <% }) %>
             <hr>
         <% }) %>
-        
     </div>
 </div>
 
